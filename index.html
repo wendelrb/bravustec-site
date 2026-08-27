@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BravusTec Soluções Ambientais — Controle de pragas em Marau e região</title>
+<meta name="description" content="Controle de pragas em Marau/RS para casas e empresas. Vistoria sem custo, aplicação por equipe com EPI e comprovante de execução de serviço conforme a RDC 622/2022 da ANVISA.">
+<meta name="theme-color" content="#12100C">
+
+<!-- RASCUNHO: impede o Google de indexar enquanto houver [[CAMPOS]] por preencher.
+     REMOVA esta linha somente na hora de publicar de verdade. -->
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="BravusTec Soluções Ambientais — Marau/RS">
+<meta property="og:description" content="Controle de pragas para casas e empresas em Marau e região. Vistoria sem custo e documentação para vigilância sanitária.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --ink:        #12100C;   /* preto quente, base da marca              */
+  --ink-soft:   #211D15;   /* superfície escura elevada                */
+  --paper:      #F7F4EE;   /* branco quente                            */
+  --white:      #FFFFFF;
+  --gold:       #D9A62C;   /* dourado da marca — fundos e botões       */
+  --gold-lt:    #F2C75B;   /* dourado claro — acento sobre preto       */
+  --gold-hv:    #C4941F;   /* dourado de hover                         */
+  --gold-tx:    #8A6410;   /* dourado escuro — texto sobre branco (AA) */
+  --text:       #191510;
+  --muted:      #6E6455;
+  --line:       rgba(18,16,12,.12);
+
+  --r-sm: 10px;
+  --r:    16px;
+  --r-lg: 26px;
+
+  --sh-sm: 0 1px 2px rgba(18,16,12,.05), 0 4px 14px rgba(18,16,12,.05);
+  --sh:    0 2px 4px rgba(18,16,12,.05), 0 14px 38px rgba(18,16,12,.09);
+  --sh-lg: 0 30px 70px rgba(18,16,12,.18);
+
+  --pad: clamp(20px, 5vw, 76px);
+  --maxw: 1280px;
+
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+}
+
+/* ============================================================
+   SISTEMA DE IMAGENS  ← é isso que dá "nossa identidade"
+   ------------------------------------------------------------
+   Toda foto do site passa pelo mesmo tratamento: dessaturada e
+   tingida no verde da marca. Assim fotos de origens diferentes
+   (banco de imagens, celular do técnico, câmera boa) viram um
+   conjunto só. No hover a cor real aparece.
+
+   Os cards de serviço usam ILUSTRAÇÃO SVG própria (classe .ill),
+   não foto. Para trocar por foto, substitua o bloco
+   <div class="ill img-4x3">...</div> por
+   <div class="img img-4x3"><img src="SUA-FOTO.jpg" alt="..."></div>
+   que o tratamento duotone é aplicado automaticamente.
+   ============================================================ */
+.img{
+  position:relative; overflow:hidden; isolation:isolate;
+  background:var(--ink); border-radius:var(--r);
+}
+.img img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  filter:grayscale(1) contrast(1.08) brightness(1.04);
+  transition:filter .45s ease, transform .6s cubic-bezier(.22,.7,.3,1);
+}
+.img::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(158deg, #E0AE38 0%, #12100C 84%);
+  mix-blend-mode:color;
+  transition:opacity .45s ease;
+}
+.img-4x3{ aspect-ratio:4/3; }
+.img-3x2{ aspect-ratio:3/2; }
+.img-1x1{ aspect-ratio:1/1; }
+.img-4x5{ aspect-ratio:4/5; }
+
+/* revela a cor real no hover */
+.reveal:hover .img img{ filter:grayscale(.08) contrast(1); transform:scale(1.04); }
+.reveal:hover .img::after{ opacity:0; }
+
+.img-cap{
+  position:absolute; left:12px; bottom:12px; z-index:2;
+  background:rgba(18,16,12,.72); backdrop-filter:blur(6px);
+  color:#fff; font-size:.74rem; font-weight:600;
+  letter-spacing:.05em; text-transform:uppercase;
+  padding:6px 11px; border-radius:100px;
+  border:1px solid rgba(242,199,91,.30);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:clamp(16px,1.02vw,17.5px);
+  line-height:1.62;
+  overflow-x:hidden;
+  overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; }
+
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:700;
+  line-height:1.03;
+  letter-spacing:-.028em;
+  margin:0;
+  text-wrap:balance;
+}
+h1{ font-size:clamp(2.3rem,4.6vw,3.6rem); font-weight:800; }
+h2{ font-size:clamp(1.95rem,4.1vw,3.15rem); }
+h3{ font-size:clamp(1.2rem,1.7vw,1.5rem); letter-spacing:-.018em; }
+p{ margin:0 0 1em; }
+p:last-child{ margin-bottom:0; }
+
+.wrap{ max-width:var(--maxw); margin-inline:auto; padding-inline:var(--pad); }
+.sec{ padding-block:clamp(64px,8.5vw,132px); }
+section[id], main[id]{ scroll-margin-top:84px; }
+
+:focus-visible{ outline:3px solid var(--gold-lt); outline-offset:3px; border-radius:4px; }
+
+.eyebrow{
+  font-family:var(--font-body);
+  font-size:.79rem;
+  font-weight:600;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--gold-tx);
+  display:flex; align-items:center; gap:11px;
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:""; width:26px; height:2px; background:var(--gold-lt); border-radius:2px; flex:none;
+}
+.dark .eyebrow{ color:var(--gold-lt); }
+.dark .eyebrow::before{ background:var(--gold-lt); }
+
+.lede{ font-size:clamp(1.05rem,1.35vw,1.22rem); color:var(--muted); max-width:56ch; }
+.dark .lede{ color:rgba(255,255,255,.72); }
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:54px; padding:0 26px;
+  border-radius:var(--r-sm);
+  font-family:var(--font-body); font-size:1rem; font-weight:600;
+  text-decoration:none; border:1.5px solid transparent; cursor:pointer;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.btn svg{ flex:none; }
+.btn-primary{ background:var(--gold); color:var(--ink); box-shadow:var(--sh-sm); }
+.btn-primary:hover{ background:var(--gold-hv); transform:translateY(-2px); box-shadow:var(--sh); }
+.btn-ghost{ border-color:var(--line); color:var(--text); background:var(--white); }
+.btn-ghost:hover{ transform:translateY(-2px); box-shadow:var(--sh-sm); }
+.dark .btn-ghost{ border-color:rgba(255,255,255,.26); color:#fff; background:transparent; }
+.dark .btn-ghost:hover{ background:rgba(255,255,255,.08); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.hdr{
+  position:sticky; top:0; z-index:60;
+  background:rgba(247,244,238,.86);
+  backdrop-filter:saturate(1.5) blur(14px);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s ease, background .25s ease;
+}
+.hdr.scrolled{ border-bottom-color:var(--line); }
+.hdr-in{
+  max-width:1340px; margin-inline:auto; padding:11px var(--pad);
+  display:flex; align-items:center; gap:clamp(14px,2vw,32px);
+  min-height:68px;
+}
+.brand{ display:flex; align-items:center; gap:11px; text-decoration:none; margin-right:auto; flex:none; }
+.brand-txt{ display:flex; flex-direction:column; justify-content:center; gap:1px; }
+.brand-mark{
+  width:40px; height:40px; border-radius:10px; flex:none;
+  background:var(--ink); color:var(--gold-lt);
+  display:grid; place-items:center;
+  font-family:var(--font-display); font-weight:800; font-size:1rem; letter-spacing:-.03em;
+}
+.brand-name{ font-family:var(--font-display); font-weight:700; font-size:1.15rem; letter-spacing:-.032em; line-height:1; white-space:nowrap; }
+.brand-sub{ font-size:.615rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-tx); font-weight:600; white-space:nowrap; line-height:1; }
+
+.nav{ display:none; gap:clamp(16px,1.7vw,26px); align-items:center; }
+.nav a{
+  text-decoration:none; font-size:.92rem; font-weight:500; color:var(--muted);
+  transition:color .16s; white-space:nowrap; line-height:1;
+}
+.nav a:hover{ color:var(--text); }
+.hdr .btn{ min-height:44px; padding:0 17px; font-size:.92rem; white-space:nowrap; flex:none; }
+.hdr-cta{ display:none; }
+
+.burger{
+  width:46px; height:46px; border-radius:11px; border:1px solid var(--line);
+  background:var(--white); display:grid; place-items:center; cursor:pointer; padding:0;
+}
+.burger span{ display:block; width:19px; height:2px; background:var(--text); border-radius:2px; position:relative; transition:.25s; }
+.burger span::before,.burger span::after{
+  content:""; position:absolute; left:0; width:19px; height:2px; background:var(--text); border-radius:2px; transition:.25s;
+}
+.burger span::before{ top:-6px; }
+.burger span::after{ top:6px; }
+.burger[aria-expanded="true"] span{ background:transparent; }
+.burger[aria-expanded="true"] span::before{ top:0; transform:rotate(45deg); }
+.burger[aria-expanded="true"] span::after{ top:0; transform:rotate(-45deg); }
+
+.mnav{ display:none; border-top:1px solid var(--line); background:var(--paper); padding:10px var(--pad) 22px; }
+.mnav.open{ display:block; }
+.mnav a{
+  display:block; padding:14px 2px; text-decoration:none; font-weight:500;
+  border-bottom:1px solid var(--line); font-size:1.05rem;
+}
+.mnav a:last-of-type{ border-bottom:none; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  background:var(--ink);
+  color:#fff;
+  position:relative; overflow:hidden; isolation:isolate;
+  padding-block:clamp(52px,7vw,96px) clamp(96px,11vw,150px);
+}
+.hero-bg{ position:absolute; inset:0; z-index:-2; }
+.hero-bg svg{ display:block; }
+.hero-bg img{
+  width:100%; height:100%; object-fit:cover;
+  filter:grayscale(1) contrast(1.1) brightness(.62);
+}
+.hero-bg::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(158deg,#D9A62C,#12100C 78%);
+  mix-blend-mode:color;
+}
+.hero::before{
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:
+    linear-gradient(100deg, rgba(18,16,12,.94) 0%, rgba(18,16,12,.80) 46%, rgba(18,16,12,.55) 100%),
+    radial-gradient(120% 90% at 88% 8%, rgba(27,68,54,.60) 0%, transparent 58%);
+}
+.hero::after{
+  content:""; position:absolute; inset:auto 0 0 0; height:150px;
+  background:linear-gradient(to bottom, transparent, rgba(247,244,238,.06));
+  pointer-events:none;
+}
+.hero-grid{ display:grid; gap:clamp(40px,5vw,62px); align-items:center; }
+.hero h1{ margin-bottom:22px; }
+.hero .lede{ margin-bottom:34px; max-width:50ch; }
+.hero-ctas{ display:flex; flex-wrap:wrap; gap:12px; }
+@media (max-width:520px){
+  .hero-ctas{ flex-direction:column; align-items:stretch; }
+  .hero-ctas .btn{ width:100%; padding:0 16px; }
+  .card-fork .btn{ width:100%; }
+  .step-n{ width:44px; height:44px; font-size:1.02rem; }
+  .step{ gap:15px; padding:22px 0; }
+}
+.hero-note{
+  margin-top:26px; font-size:.9rem; color:rgba(255,255,255,.56);
+  display:flex; flex-wrap:wrap; align-items:center; gap:4px 9px;
+}
+.hero-note b{ color:var(--gold-lt); font-weight:600; }
+
+/* Assinatura: mapa de pontos de monitoramento */
+.plan{
+  position:relative; border-radius:var(--r-lg);
+  background:linear-gradient(160deg,#221E15,#12100C);
+  border:1px solid rgba(242,199,91,.16);
+  box-shadow:var(--sh-lg);
+  padding:22px 22px 18px;
+}
+.plan-hd{
+  display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:6px 12px;
+  margin-bottom:14px; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;
+  color:rgba(255,255,255,.42);
+}
+.plan-hd b{ color:var(--gold-lt); font-weight:600; }
+.plan svg{ width:100%; height:auto; display:block; }
+.plan-ft{
+  margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,.09);
+  font-size:.86rem; color:rgba(255,255,255,.58); line-height:1.5;
+}
+.pt-dot{ animation:ping 3.4s ease-in-out infinite; transform-origin:center; transform-box:fill-box; }
+.pt-dot:nth-of-type(2){ animation-delay:.5s }
+.pt-dot:nth-of-type(3){ animation-delay:1s }
+.pt-dot:nth-of-type(4){ animation-delay:1.5s }
+.pt-dot:nth-of-type(5){ animation-delay:2s }
+.pt-dot:nth-of-type(6){ animation-delay:2.5s }
+@keyframes ping{
+  0%,72%,100%{ opacity:.34; transform:scale(1); }
+  16%{ opacity:1; transform:scale(1.55); }
+}
+
+/* ============================================================
+   FAIXA DE PROVA
+   ============================================================ */
+.proof{ background:var(--white); border-bottom:1px solid var(--line); }
+.proof-in{
+  max-width:var(--maxw); margin-inline:auto; padding:0 var(--pad);
+  display:grid; gap:0;
+}
+.proof-item{ padding:28px 0; border-bottom:1px solid var(--line); display:flex; gap:15px; align-items:flex-start; }
+.proof-item:last-child{ border-bottom:none; }
+.proof-ico{ flex:none; width:38px; height:38px; border-radius:10px; background:rgba(217,166,44,.16); display:grid; place-items:center; color:var(--gold-tx); }
+.proof-item strong{ display:block; font-family:var(--font-display); font-weight:700; font-size:1.03rem; letter-spacing:-.015em; margin-bottom:3px; }
+.proof-item span{ font-size:.92rem; color:var(--muted); }
+
+/* ============================================================
+   BIFURCAÇÃO CASA / EMPRESA
+   ============================================================ */
+.fork{ display:grid; gap:22px; margin-top:46px; }
+.card-fork{
+  border-radius:var(--r-lg); padding:clamp(28px,3.4vw,44px);
+  display:flex; flex-direction:column;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.card-fork:hover{ transform:translateY(-4px); }
+.fork-home{ background:var(--white); box-shadow:var(--sh); }
+.fork-biz{ background:var(--ink); color:#fff; box-shadow:var(--sh); }
+.fork-biz .lede{ color:rgba(255,255,255,.72); }
+.card-fork h3{ font-size:clamp(1.45rem,2.3vw,1.95rem); margin-bottom:14px; }
+.fork-list{ list-style:none; padding:0; margin:26px 0 30px; display:grid; gap:13px; }
+.fork-list li{ display:flex; gap:11px; align-items:flex-start; font-size:.98rem; }
+.fork-list svg{ flex:none; margin-top:4px; color:var(--gold-tx); }
+.fork-biz .fork-list svg{ color:var(--gold-lt); }
+.card-fork .btn{ align-self:flex-start; margin-top:auto; }
+
+/* ============================================================
+   SERVIÇOS
+   ============================================================ */
+.svc-grid{ display:grid; gap:18px; margin-top:46px; }
+.svc{
+  background:var(--white); border-radius:var(--r);
+  padding:26px 24px 24px; box-shadow:var(--sh-sm);
+  transition:transform .22s ease, box-shadow .22s ease;
+  position:relative; overflow:hidden;
+}
+.svc::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+  background:var(--gold); opacity:0; transition:opacity .22s ease;
+}
+.svc:hover{ transform:translateY(-4px); box-shadow:var(--sh); }
+.svc:hover::before{ opacity:1; }
+.svc{ padding:0; }
+.svc-body{ padding:22px 24px 26px; }
+.svc .img{ border-radius:0; }
+.ill{
+  position:relative; overflow:hidden; background:var(--ink);
+  border-radius:var(--r); display:block;
+}
+.ill svg{
+  width:100%; height:100%; display:block;
+  transition:transform .55s cubic-bezier(.22,.7,.3,1);
+}
+.ill .art{ transition:opacity .4s ease; }
+.reveal:hover .ill svg{ transform:scale(1.045); }
+.svc .ill{ border-radius:0; }
+.svc-media{ position:relative; }
+
+/* ---------- Galeria "Em campo" ---------- */
+.campo{ background:var(--ink); color:#fff; position:relative; overflow:hidden; }
+.gal{ display:grid; gap:14px; margin-top:46px; }
+.gal figure{ margin:0; }
+.gal figcaption{ margin-top:11px; font-size:.9rem; color:rgba(255,255,255,.6); }
+.gal .img{ border:1px solid rgba(255,255,255,.10); }
+.pend{
+  position:relative; display:flex; flex-direction:column; justify-content:flex-end;
+  gap:5px; padding:20px 18px; border-radius:var(--r);
+  background:linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+  border:1.5px dashed rgba(242,199,91,.42);
+  color:var(--gold-lt);
+}
+.pend svg{ margin-bottom:auto; opacity:.85; }
+.pend b{ font-family:var(--font-display); font-size:1rem; font-weight:700; letter-spacing:-.015em; color:#fff; }
+.pend span{ font-size:.84rem; color:rgba(255,255,255,.56); line-height:1.45; }
+.gal-note{
+  margin-top:30px; padding:18px 20px; border-radius:var(--r);
+  background:rgba(242,199,91,.09); border:1px dashed rgba(242,199,91,.38);
+  font-size:.9rem; color:rgba(255,255,255,.72);
+}
+.gal-note b{ color:var(--gold-lt); }
+.svc h3{ font-size:1.12rem; margin-bottom:5px; }
+.svc-tag{ font-size:.83rem; color:var(--gold-lt); font-weight:600; display:block; margin-bottom:11px; }
+.svc p{ font-size:.94rem; color:var(--muted); }
+
+/* ============================================================
+   COMO FUNCIONA
+   ============================================================ */
+.how{ background:var(--white); }
+.steps{ display:grid; gap:8px; margin-top:46px; counter-reset:s; }
+.step{
+  display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:start;
+  padding:26px 0; border-top:1px solid var(--line);
+}
+.step:last-child{ border-bottom:1px solid var(--line); }
+.step-n{
+  width:52px; height:52px; border-radius:50%; flex:none;
+  display:grid; place-items:center;
+  font-family:var(--font-display); font-weight:800; font-size:1.15rem;
+  background:var(--paper); color:var(--gold-tx);
+  border:1.5px solid var(--line);
+}
+.step:hover .step-n{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
+.step-n, .step:hover .step-n{ transition:.22s ease; }
+.step h3{ margin-bottom:6px; }
+.step p{ color:var(--muted); font-size:.98rem; max-width:62ch; }
+
+/* ============================================================
+   CREDENCIAIS (escuro)
+   ============================================================ */
+.cred{ background:var(--ink); color:#fff; position:relative; overflow:hidden; }
+.cred::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(70% 60% at 82% 12%, rgba(242,199,91,.10), transparent 62%);
+  pointer-events:none;
+}
+.cred .wrap{ position:relative; }
+.cred-grid{ display:grid; gap:14px; margin-top:46px; }
+.cred-item{
+  background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--r); padding:22px 20px;
+  transition:background .22s ease, border-color .22s ease;
+}
+.cred-item:hover{ background:rgba(255,255,255,.075); border-color:rgba(242,199,91,.34); }
+.cred-item strong{ display:block; font-family:var(--font-display); font-size:1.04rem; font-weight:700; letter-spacing:-.015em; margin-bottom:6px; }
+.cred-item span{ font-size:.92rem; color:rgba(255,255,255,.66); }
+.cred-item .ph{ color:var(--gold-lt); font-weight:600; }
+
+/* ============================================================
+   SEGURANÇA (pets / crianças)
+   ============================================================ */
+.safe-grid{ display:grid; gap:clamp(32px,4vw,58px); align-items:center; }
+.photo{
+  position:relative; border-radius:var(--r-lg); overflow:hidden;
+  background:linear-gradient(150deg, #EDE7DA, #F7F4EE);
+  border:2px dashed rgba(217,166,44,.32);
+  min-height:300px; display:grid; place-items:center; text-align:center; padding:30px;
+}
+.photo p{ font-size:.9rem; color:var(--gold-tx); font-weight:600; max-width:30ch; }
+.photo small{ display:block; font-weight:400; color:var(--muted); margin-top:8px; font-size:.84rem; }
+.photo svg{ margin:0 auto 12px; color:var(--gold); opacity:.6; }
+.safe-list{ list-style:none; padding:0; margin:28px 0 0; display:grid; gap:18px; }
+.safe-list li{ display:flex; gap:14px; align-items:flex-start; }
+.safe-list b{ display:block; font-family:var(--font-display); font-weight:700; letter-spacing:-.015em; margin-bottom:2px; }
+.safe-list span{ color:var(--muted); font-size:.95rem; }
+.safe-ico{ flex:none; width:36px; height:36px; border-radius:10px; background:rgba(217,166,44,.20); display:grid; place-items:center; color:var(--gold-tx); }
+
+/* ============================================================
+   ÁREA DE ATENDIMENTO
+   ============================================================ */
+.area{ background:var(--white); }
+.cities{ display:flex; flex-wrap:wrap; gap:9px; margin-top:32px; }
+.city{
+  padding:9px 17px; border-radius:100px; background:var(--paper);
+  border:1px solid var(--line); font-size:.92rem; font-weight:500;
+}
+.city-main{ background:var(--gold); color:var(--ink); border-color:var(--gold); font-weight:600; }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{ margin-top:44px; max-width:860px; }
+.q{ border-bottom:1px solid var(--line); }
+.q:first-child{ border-top:1px solid var(--line); }
+.q summary{ list-style:none; cursor:pointer; }
+.q summary::-webkit-details-marker{ display:none; }
+.q summary::marker{ content:""; }
+.q button{
+  width:100%; background:none; border:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+  padding:24px 0; text-align:left;
+  font-family:var(--font-display); font-weight:700; font-size:clamp(1.02rem,1.5vw,1.18rem);
+  letter-spacing:-.015em; color:var(--text);
+}
+.q-ico{
+  flex:none; width:32px; height:32px; border-radius:50%; border:1.5px solid var(--line);
+  display:grid; place-items:center; transition:.25s ease; color:var(--gold-tx);
+}
+.q[open] .q-ico{ transform:rotate(45deg); background:var(--gold); color:var(--ink); border-color:var(--gold); }
+.q-body{ padding:0 0 24px; color:var(--muted); max-width:68ch; font-size:.98rem; }
+
+/* ============================================================
+   CTA FINAL
+   ============================================================ */
+.final{
+  background:linear-gradient(150deg, #2A2418, var(--ink) 72%);
+  color:#fff; text-align:center; position:relative; overflow:hidden;
+}
+.final::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(60% 70% at 50% 0%, rgba(242,199,91,.14), transparent 60%);
+}
+.final .wrap{ position:relative; }
+.final h2{ margin-bottom:18px; }
+.final .lede{ margin:0 auto 32px; color:rgba(255,255,255,.74); }
+.final .hero-ctas{ justify-content:center; }
+
+/* ============================================================
+   RODAPÉ
+   ============================================================ */
+.ft{ background:var(--ink); color:rgba(255,255,255,.6); padding-block:clamp(48px,6vw,72px) 120px; font-size:.92rem; }
+.ft-grid{ display:grid; gap:34px; }
+.ft h4{ font-size:.76rem; letter-spacing:.13em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:14px; font-family:var(--font-body); font-weight:600; }
+.ft a{ text-decoration:none; }
+.ft a:hover{ color:#fff; }
+.ft ul{ list-style:none; padding:0; margin:0; display:grid; gap:9px; }
+.ft-brand .brand-name{ color:#fff; }
+.ft-brand .brand-sub{ color:rgba(255,255,255,.45); }
+.ft-legal{
+  border-top:1px solid rgba(255,255,255,.10); margin-top:38px; padding-top:24px;
+  font-size:.84rem; color:rgba(255,255,255,.42); line-height:1.7;
+}
+
+/* ============================================================
+   BOTÃO FLUTUANTE WHATSAPP
+   ============================================================ */
+.wa{
+  position:fixed; z-index:90;
+  right:clamp(16px,3vw,28px);
+  bottom:calc(clamp(16px,3vw,28px) + env(safe-area-inset-bottom, 0px));
+  width:60px; height:60px; border-radius:50%;
+  background:#1FA855; color:#fff;
+  display:grid; place-items:center; text-decoration:none;
+  box-shadow:0 8px 26px rgba(31,168,85,.42), 0 2px 6px rgba(0,0,0,.16);
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s ease;
+  animation:wa-in .5s .9s cubic-bezier(.34,1.56,.64,1) backwards;
+}
+.wa:hover{ transform:scale(1.09); box-shadow:0 12px 34px rgba(31,168,85,.5); }
+.wa:active{ transform:scale(.96); }
+@keyframes wa-in{ from{ opacity:0; transform:scale(.4) translateY(14px); } }
+
+/* ============================================================
+   REVELAÇÃO NA ROLAGEM
+   ============================================================ */
+.rv{ opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s cubic-bezier(.22,.7,.3,1); }
+.rv.in{ opacity:1; transform:none; }
+
+/* ============================================================
+   BREAKPOINTS
+   ============================================================ */
+@media (min-width:460px){
+  .gal{ grid-template-columns:repeat(2,1fr); }
+}
+@media (min-width:640px){
+  .proof-in{ grid-template-columns:repeat(3,1fr); gap:0 34px; }
+  .proof-item{ border-bottom:none; }
+  .svc-grid{ grid-template-columns:repeat(2,1fr); }
+  .cred-grid{ grid-template-columns:repeat(2,1fr); }
+  .gal{ grid-template-columns:repeat(2,1fr); }
+}
+@media (min-width:900px){
+  .nav{ display:flex; }
+  .nav a[data-opt]{ display:none; }
+  .hdr-cta{ display:inline-flex; }
+  .burger{ display:none; }
+  .hero-grid{ grid-template-columns:1.04fr .96fr; }
+  .fork{ grid-template-columns:1fr 1fr; }
+  .svc-grid{ grid-template-columns:repeat(3,1fr); }
+  .cred-grid{ grid-template-columns:repeat(3,1fr); }
+  .safe-grid{ grid-template-columns:.95fr 1.05fr; }
+  .gal{ grid-template-columns:repeat(4,1fr); }
+  .steps{ grid-template-columns:1fr 1fr; gap:0 44px; }
+  .ft-grid{ grid-template-columns:1.5fr 1fr 1fr 1.2fr; }
+}
+
+@media (min-width:1180px){
+  .nav a[data-opt]{ display:inline; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  html{ scroll-behavior:auto; }
+  .rv{ opacity:1; transform:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#topo">
+      <span class="brand-mark">BT</span>
+      <span class="brand-txt">
+        <span class="brand-name">BravusTec</span>
+        <span class="brand-sub">Soluções Ambientais</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#campo" data-opt>Em campo</a>
+      <a href="#credenciais">Credenciais</a>
+      <a href="#area" data-opt>Onde atendemos</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+    <a class="btn btn-primary hdr-cta" data-wa href="#">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.16c-.25.69-1.46 1.32-2 1.36-.51.04-.99.22-3.34-.7-2.83-1.12-4.63-3.99-4.77-4.18-.14-.19-1.14-1.51-1.14-2.89s.72-2.05.98-2.33c.25-.28.55-.35.74-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.23.55.79 1.93.86 2.07.07.14.12.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.81.88-1.09.18-.28.37-.23.62-.14.25.09 1.6.76 1.87.9.28.14.46.21.53.32.07.12.07.67-.18 1.36z"/></svg>
+      Falar no WhatsApp
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Abrir menu"><span></span></button>
+  </div>
+  <div class="mnav" id="mnav">
+    <a href="#servicos">Serviços</a>
+    <a href="#processo">Como funciona</a>
+    <a href="#campo">Em campo</a>
+    <a href="#credenciais">Credenciais</a>
+    <a href="#seguranca">Segurança</a>
+    <a href="#area">Onde atendemos</a>
+    <a href="#faq">Dúvidas</a>
+  </div>
+</header>
+
+<main id="topo">
+
+<!-- ========== HERO ========== -->
+<section class="hero dark">
+  <!-- FUNDO DO HERO — trocar por <img> com foto real da equipe/veículo quando houver -->
+  <div class="hero-bg" aria-hidden="true">
+    <svg width="100%" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1400 900">
+      <defs>
+        <pattern id="hgrid" width="56" height="56" patternUnits="userSpaceOnUse">
+          <path d="M56 0H0v56" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="1400" height="900" fill="#12100C"/>
+      <rect width="1400" height="900" fill="url(#hgrid)"/>
+      <g fill="none" stroke="rgba(255,255,255,.07)" stroke-width="2">
+        <rect x="740" y="120" width="560" height="660" rx="14"/>
+        <path d="M1020 120v260M1020 470v310M1020 470h280M900 470v310M740 640h160"/>
+      </g>
+      <g fill="rgba(242,199,91,.30)">
+        <circle cx="836" cy="250" r="9"/><circle cx="1160" cy="228" r="9"/>
+        <circle cx="880" cy="560" r="9"/><circle cx="1210" cy="620" r="9"/>
+        <circle cx="1080" cy="720" r="9"/>
+      </g>
+    </svg>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Controle de pragas · Marau e região</p>
+      <h1>Controle de pragas em Marau e região</h1>
+      <p class="lede"><strong style="color:var(--gold-lt);font-weight:600">A praga sai e o documento fica.</strong> Vistoria antes de aplicar, produto certo para a praga certa e comprovante de execução de serviço no final. Para casas, comércios e indústrias.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" data-wa href="#">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.16c-.25.69-1.46 1.32-2 1.36-.51.04-.99.22-3.34-.7-2.83-1.12-4.63-3.99-4.77-4.18-.14-.19-1.14-1.51-1.14-2.89s.72-2.05.98-2.33c.25-.28.55-.35.74-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.23.55.79 1.93.86 2.07.07.14.12.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.81.88-1.09.18-.28.37-.23.62-.14.25.09 1.6.76 1.87.9.28.14.46.21.53.32.07.12.07.67-.18 1.36z"/></svg>
+          Pedir orçamento no WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="tel:+5554996942942">Ligar agora</a>
+      </div>
+      <p class="hero-note"><b>Vistoria sem custo</b> em Marau · atendimento de urgência</p>
+    </div>
+
+    <!-- ASSINATURA: mapa de pontos de monitoramento -->
+    <div class="plan" aria-label="Ilustração de um mapa de pontos de monitoramento de pragas">
+      <div class="plan-hd"><span>Mapa de pontos</span><b>6 pontos ativos</b></div>
+      <svg viewBox="0 0 400 260" role="img" aria-hidden="true">
+        <defs>
+          <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="7" stroke="rgba(242,199,91,.14)" stroke-width="2.5"/>
+          </pattern>
+        </defs>
+        <!-- planta -->
+        <rect x="18" y="18" width="364" height="224" rx="10" fill="rgba(255,255,255,.022)" stroke="rgba(255,255,255,.20)" stroke-width="1.6"/>
+        <line x1="160" y1="18" x2="160" y2="112" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/>
+        <line x1="160" y1="150" x2="160" y2="242" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/>
+        <line x1="160" y1="150" x2="382" y2="150" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/>
+        <line x1="262" y1="18" x2="262" y2="112" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/>
+        <rect x="26" y="196" width="52" height="38" fill="url(#hatch)" stroke="rgba(242,199,91,.26)" stroke-width="1.2" rx="4"/>
+        <text x="52" y="219" text-anchor="middle" fill="rgba(242,199,91,.65)" font-size="9" font-family="Instrument Sans, sans-serif" font-weight="600">DEPÓSITO</text>
+        <!-- pontos -->
+        <g fill="#F2C75B">
+          <g class="pt-dot"><circle cx="70" cy="62"  r="6"/></g>
+          <g class="pt-dot"><circle cx="212" cy="66" r="6"/></g>
+          <g class="pt-dot"><circle cx="330" cy="58" r="6"/></g>
+          <g class="pt-dot"><circle cx="96" cy="150" r="6"/></g>
+          <g class="pt-dot"><circle cx="238" cy="200" r="6"/></g>
+          <g class="pt-dot"><circle cx="342" cy="206" r="6"/></g>
+        </g>
+        <g fill="rgba(255,255,255,.62)" font-size="10" font-family="Instrument Sans, sans-serif" font-weight="600">
+          <text x="82"  y="66">01</text>
+          <text x="224" y="70">02</text>
+          <text x="342" y="62">03</text>
+          <text x="108" y="154">04</text>
+          <text x="250" y="204">05</text>
+          <text x="354" y="210">06</text>
+        </g>
+      </svg>
+      <p class="plan-ft">Cada ponto de monitoramento entra no mapa com número, data da última visita e o que foi encontrado. É esse documento que a vigilância sanitária pede.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAIXA DE PROVA ========== -->
+<section class="proof">
+  <div class="proof-in">
+    <div class="proof-item">
+      <span class="proof-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+      <span><strong>Vistoria sem custo</strong><span>Com relatório do que foi encontrado no local</span></span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 11h3"/></svg></span>
+      <span><strong>Comprovante de execução</strong><span>Documento assinado pelo responsável técnico</span></span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+      <span><strong>RDC 622/2022 da ANVISA</strong><span>Norma vigente para controle de pragas urbanas</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BIFURCAÇÃO ========== -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">Dois tipos de necessidade</p>
+    <h2 class="rv">Sua casa e sua empresa<br>não têm o mesmo problema</h2>
+    <div class="fork">
+      <article class="card-fork fork-home rv">
+        <h3>Apareceu praga<br>e você quer resolver hoje</h3>
+        <p class="lede">Serviço avulso, valor fechado antes de começar e orientação clara sobre crianças e animais. Você sabe quanto tempo precisa ficar fora e quando pode voltar.</p>
+        <ul class="fork-list">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Orçamento pelo WhatsApp, com foto do problema</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Casa, apartamento, pátio e área externa</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Retorno dentro do prazo de garantia, sem cobrança</li>
+        </ul>
+        <a class="btn btn-primary" data-wa href="#">Pedir orçamento</a>
+      </article>
+
+      <article class="card-fork fork-biz dark rv">
+        <h3>Você precisa passar<br>na vigilância sem susto</h3>
+        <p class="lede">Restaurantes, padarias, mercados, hotéis, condomínios e agroindústria. Plano periódico com mapa de pontos e documentação pronta para auditoria e renovação de alvará.</p>
+        <ul class="fork-list">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Comprovante com nome e registro do responsável técnico</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Mapa de pontos de monitoramento numerado</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Contrato mensal, trimestral ou semestral</li>
+        </ul>
+        <a class="btn btn-ghost" data-wa href="#">Falar com um técnico</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVIÇOS ========== -->
+<section class="sec" id="servicos">
+  <div class="wrap">
+    <p class="eyebrow rv">Serviços</p>
+    <h2 class="rv">Nome técnico e nome<br>popular, lado a lado</h2>
+    <div class="svc-grid">
+
+      <article class="svc rv reveal">
+        <div class="svc-media">
+          <div class="ill img-4x3">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de barata vista de cima" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="bga" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
+                </linearGradient>
+                <pattern id="gra" width="26" height="26" patternUnits="userSpaceOnUse">
+                  <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="400" height="300" fill="url(#bga)"/>
+              <rect width="400" height="300" fill="url(#gra)"/>
+              <g class="art">
+<path d="M200 44 C168 26 138 30 118 52" fill="none" stroke="#F2C75B" stroke-width="4" stroke-linecap="round"/>
+<path d="M200 44 C232 26 262 30 282 52" fill="none" stroke="#F2C75B" stroke-width="4" stroke-linecap="round"/>
+<path d="M246 128 L292 106 L312 144" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M154 128 L108 106 L88 144" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M246 165 L292 143 L312 181" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M154 165 L108 143 L88 181" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M246 200 L292 178 L312 216" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M154 200 L108 178 L88 216" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="200" cy="176" rx="56" ry="82" fill="#D9A62C"/>
+<path d="M200 100 v152" stroke="#8A6410" stroke-width="4"/>
+<path d="M162 126 q38 34 0 92 M238 126 q-38 34 0 92" fill="none" stroke="#8A6410" stroke-width="3.5" opacity=".85"/>
+<ellipse cx="200" cy="106" rx="46" ry="33" fill="#8A6410"/>
+<ellipse cx="200" cy="70" rx="24" ry="19" fill="#D9A62C"/>
+<circle cx="190" cy="66" r="3.6" fill="#F2C75B"/><circle cx="210" cy="66" r="3.6" fill="#F2C75B"/></g>
+            </svg>
+            <span class="img-cap">Baratas e insetos rasteiros</span></div>
+        </div>
+        <div class="svc-body">
+        <h3>Desinsetização</h3>
+        <span class="svc-tag">baratas, formigas, aranhas, moscas e mosquitos</span>
+        <p>Aplicação dirigida em frestas, ralos, caixas de passagem e pontos de abrigo, com gel ou produto residual conforme o tipo de infestação.</p>
+        </div>
+      </article>
+
+      <article class="svc rv reveal">
+        <div class="svc-media">
+          <div class="ill img-4x3">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de porta-isca lacrado com roedor" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="bgb" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
+                </linearGradient>
+                <pattern id="grb" width="26" height="26" patternUnits="userSpaceOnUse">
+                  <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="400" height="300" fill="url(#bgb)"/>
+              <rect width="400" height="300" fill="url(#grb)"/>
+              <g class="art">
+<path d="M40 244 H360" stroke="rgba(255,255,255,.62)" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M300 244 c0-30 -22-46 -46-46 -16 0 -26 8 -34 16 -8-10 -20-14 -32-10" fill="#D9A62C"/>
+<circle cx="272" cy="212" r="11" fill="#8A6410"/>
+<circle cx="292" cy="216" r="3.4" fill="#F2C75B"/>
+<path d="M188 204 c-22 -6 -34 6 -30 22" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4" stroke-linecap="round"/>
+<rect x="70" y="150" width="164" height="94" rx="12" fill="#8A6410" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
+<rect x="70" y="150" width="164" height="26" rx="12" fill="#D9A62C"/>
+<path d="M70 176 H234" stroke="rgba(255,255,255,.62)" stroke-width="2" opacity=".6"/>
+<path d="M88 244 v-26 a16 16 0 0 1 32 0 v26 z" fill="#080704"/>
+<circle cx="206" cy="206" r="12" fill="none" stroke="#F2C75B" stroke-width="3"/>
+<path d="M206 200 v12" stroke="#F2C75B" stroke-width="3" stroke-linecap="round"/>
+<text x="152" y="215" fill="#F2C75B" font-family="Instrument Sans,sans-serif" font-size="21" font-weight="700">04</text></g>
+            </svg>
+            <span class="img-cap">Porta-isca lacrado</span></div>
+        </div>
+        <div class="svc-body">
+        <h3>Controle de roedores</h3>
+        <span class="svc-tag">ratos e camundongos</span>
+        <p>Porta-iscas lacrados e identificados, com mapa dos pontos e conferência do consumo a cada visita técnica.</p>
+        </div>
+      </article>
+
+      <article class="svc rv reveal">
+        <div class="svc-media">
+          <div class="ill img-4x3">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de viga de madeira com galerias de cupim" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="bgc" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
+                </linearGradient>
+                <pattern id="grc" width="26" height="26" patternUnits="userSpaceOnUse">
+                  <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="400" height="300" fill="url(#bgc)"/>
+              <rect width="400" height="300" fill="url(#grc)"/>
+              <g class="art">
+<rect x="52" y="96" width="296" height="118" rx="8" fill="#8A6410" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
+<path d="M52 96 l296 0 M52 214 l296 0" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
+<path d="M84 96 v118 M136 96 v118 M264 96 v118 M316 96 v118" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+<path d="M110 214 c18 -26 4 -44 24 -60 22 -18 8 -38 30 -50 M176 214 c14 -30 -2 -40 18 -56 20 -16 10 -34 28 -46
+         M236 214 c16 -22 2 -38 22 -52" fill="none" stroke="#080704" stroke-width="13" stroke-linecap="round"/>
+<path d="M110 214 c18 -26 4 -44 24 -60 22 -18 8 -38 30 -50 M176 214 c14 -30 -2 -40 18 -56 20 -16 10 -34 28 -46
+         M236 214 c16 -22 2 -38 22 -52" fill="none" stroke="#F2C75B" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round" opacity=".8"/>
+<g transform="translate(198 258) rotate(-14)">
+  <ellipse cx="0" cy="0" rx="30" ry="12" fill="#D9A62C"/>
+  <path d="M-22 -9 v18 M-8 -11 v22 M8 -11 v22" stroke="#8A6410" stroke-width="3"/>
+  <circle cx="34" cy="0" r="11" fill="#F2C75B"/>
+  <path d="M43 -6 l12 -7 M43 6 l12 7" stroke="#F2C75B" stroke-width="3.5" stroke-linecap="round"/>
+</g></g>
+            </svg>
+            <span class="img-cap">Dano estrutural por cupim</span></div>
+        </div>
+        <div class="svc-body">
+        <h3>Descupinização</h3>
+        <span class="svc-tag">cupim de madeira e de solo</span>
+        <p>Inspeção da estrutura, injeção nas peças afetadas e barreira química no solo quando o foco vem de fora da edificação.</p>
+        </div>
+      </article>
+
+      <article class="svc rv reveal">
+        <div class="svc-media">
+          <div class="ill img-4x3">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Ilustracao de vedacao de frestas contra morcegos" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="bgd" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
+                </linearGradient>
+                <pattern id="grd" width="26" height="26" patternUnits="userSpaceOnUse">
+                  <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
+                </pattern>
+                <pattern id="telad" width="11" height="11" patternUnits="userSpaceOnUse">
+                  <path d="M11 0H0v11" fill="none" stroke="#F2C75B" stroke-width="1.6" opacity=".85"/>
+                </pattern>
+              </defs>
+              <rect width="400" height="300" fill="url(#bgd)"/>
+              <rect width="400" height="300" fill="url(#grd)"/>
+              <g class="art">
+                <path d="M40 118 L200 40 L360 118" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M66 118 v152 M334 118 v152" stroke="rgba(255,255,255,.55)" stroke-width="3"/>
+                <path d="M66 128 h268" stroke="rgba(255,255,255,.22)" stroke-width="2.5"/>
+                <rect x="196" y="150" width="112" height="82" rx="6" fill="#080704" stroke="rgba(255,255,255,.4)" stroke-width="2.5"/>
+                <rect x="202" y="156" width="100" height="70" rx="3" fill="url(#telad)"/>
+                <rect x="196" y="150" width="112" height="82" rx="6" fill="none" stroke="#F2C75B" stroke-width="2.5"/>
+                <circle cx="308" cy="150" r="12" fill="#D9A62C"/>
+                <path d="M302 150 l4 4 8 -9" fill="none" stroke="#12100C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <g transform="translate(112 186)">
+                  <path d="M0 0 c-14 -20 -34 -30 -56 -26 12 6 16 16 14 28 -10 -4 -18 -2 -24 6 16 2 24 12 26 26 14 -12 26 -16 40 -12 z" fill="#8A6410"/>
+                  <path d="M0 0 c14 -20 34 -30 56 -26 -12 6 -16 16 -14 28 10 -4 18 -2 24 6 -16 2 -24 12 -26 26 -14 -12 -26 -16 -40 -12 z" fill="#8A6410"/>
+                  <ellipse cx="0" cy="4" rx="11" ry="17" fill="#D9A62C"/>
+                  <path d="M-8 -12 l-4 -14 10 8 z M8 -12 l4 -14 -10 8 z" fill="#D9A62C"/>
+                  <circle cx="-4" cy="-2" r="2.6" fill="#12100C"/><circle cx="4" cy="-2" r="2.6" fill="#12100C"/>
+                </g>
+              </g>
+            </svg>
+            <span class="img-cap">Fresta vedada com tela</span></div>
+        </div>
+        <div class="svc-body">
+        <h3>Vedação de morcegos</h3>
+        <span class="svc-tag">manejo sem abate</span>
+        <p>Identificação das frestas de entrada, instalação de telas e vedação dos pontos de abrigo, com higienização do local. Respeita a legislação ambiental.</p>
+        </div>
+      </article>
+
+      <article class="svc rv reveal">
+        <div class="svc-media">
+          <div class="ill img-4x3">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de escorpião sobre grelha de ralo" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="bge" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
+                </linearGradient>
+                <pattern id="gre" width="26" height="26" patternUnits="userSpaceOnUse">
+                  <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="400" height="300" fill="url(#bge)"/>
+              <rect width="400" height="300" fill="url(#gre)"/>
+              <g class="art">
+<rect x="104" y="222" width="192" height="60" rx="10" fill="#8A6410" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
+<path d="M122 232 v40" stroke="rgba(255,255,255,.22)" stroke-width="6" stroke-linecap="round"/><path d="M148 232 v40" stroke="rgba(255,255,255,.22)" stroke-width="6" stroke-linecap="round"/><path d="M174 232 v40" stroke="rgba(255,255,255,.22)" stroke-width="6" stroke-linecap="round"/><path d="M200 232 v40" stroke="rgba(255,255,255,.22)" stroke-width="6" stroke-linecap="round"/><path d="M226 232 v40" stroke="rgba(255,255,255,.22)" stroke-width="6" stroke-linecap="round"/><path d="M252 232 v40" stroke="rgba(255,255,255,.22)" stroke-width="6" stroke-linecap="round"/><path d="M278 232 v40" stroke="rgba(255,255,255,.22)" stroke-width="6" stroke-linecap="round"/>
+<path d="M220 150 L254 164 L276 152" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M180 150 L146 164 L124 152" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M220 172 L254 186 L276 174" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M180 172 L146 186 L124 174" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M172 132 c-30 -6 -46 -22 -58 -40" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="5" stroke-linecap="round"/>
+<path d="M228 132 c30 -6 46 -22 58 -40" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="5" stroke-linecap="round"/>
+<path d="M114 92 l-22 -14 20 -6 14 12 z" fill="#D9A62C"/>
+<path d="M286 92 l22 -14 -20 -6 -14 12 z" fill="#D9A62C"/>
+<ellipse cx="200" cy="160" rx="30" ry="46" fill="#D9A62C"/>
+<path d="M176 138 h48 M176 156 h48 M180 176 h40" stroke="#8A6410" stroke-width="3.5"/>
+<path d="M200 206 c0 34 26 52 52 44 24 -8 26 -38 8 -50" fill="none" stroke="#D9A62C" stroke-width="17" stroke-linecap="round"/>
+<circle cx="258" cy="196" r="11" fill="#F2C75B"/></g>
+            </svg>
+            <span class="img-cap">Reservatório higienizado</span></div>
+        </div>
+        <div class="svc-body">
+        <h3>Limpeza de caixa d’água</h3>
+        <span class="svc-tag">residencial, comercial e industrial</span>
+        <p>Esvaziamento, remoção de sedimento, desinfecção e laudo com data — documento exigido em alvará e auditoria.</p>
+        </div>
+      </article>
+
+      <article class="svc rv reveal">
+        <div class="svc-media">
+          <div class="ill img-4x3">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de reservatório de água em corte" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="bgf" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
+                </linearGradient>
+                <pattern id="grf" width="26" height="26" patternUnits="userSpaceOnUse">
+                  <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="400" height="300" fill="url(#bgf)"/>
+              <rect width="400" height="300" fill="url(#grf)"/>
+              <g class="art">
+<path d="M118 76 h164" stroke="rgba(255,255,255,.62)" stroke-width="2.5" stroke-linecap="round"/>
+<rect x="168" y="52" width="64" height="24" rx="6" fill="#8A6410" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
+<path d="M118 76 v168 a12 12 0 0 0 12 12 h140 a12 12 0 0 0 12 -12 V76" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
+<path d="M126 168 v78 a6 6 0 0 0 6 6 h136 a6 6 0 0 0 6 -6 v-78
+         c-22 12 -38 -10 -60 0 -22 10 -38 -12 -60 0 -8 4 -14 3 -22 0 z" fill="#D9A62C" opacity=".92"/>
+<path d="M126 168 c22 -12 38 10 60 0 22 -10 38 12 60 0 8 -4 14 -3 22 0" fill="none" stroke="#F2C75B" stroke-width="2.5" opacity=".85"/>
+<path d="M92 132 h-42 M50 132 l14 -10 M50 132 l14 10" stroke="#F2C75B" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M308 132 h42 M350 132 l-14 -10 M350 132 l-14 10" stroke="#F2C75B" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M200 96 c14 18 22 28 22 38 a22 22 0 0 1 -44 0 c0 -10 8 -20 22 -38 z" fill="#F2C75B"/></g>
+            </svg>
+            <span class="img-cap">A confirmar</span></div>
+        </div>
+        <div class="svc-body">
+        <h3>[[QUARTO SERVIÇO DO PERFIL]]</h3>
+        <span class="svc-tag">confirmar com o cliente</span>
+        <p>O quarto item da bio do Instagram está cortado em &ldquo;Limpeza...&rdquo;. Confirme se é caixa de gordura, ar-condicionado ou outro serviço antes de publicar.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== COMO FUNCIONA ========== -->
+<section class="sec how" id="processo">
+  <div class="wrap">
+    <p class="eyebrow rv">Como funciona</p>
+    <h2 class="rv">Quatro etapas, nessa ordem</h2>
+    <div class="steps">
+      <div class="step rv">
+        <span class="step-n">1</span>
+        <div><h3>Vistoria técnica</h3><p>Vamos no local, identificamos a praga, os pontos de entrada e o que está sustentando a infestação.</p></div>
+      </div>
+      <div class="step rv">
+        <span class="step-n">2</span>
+        <div><h3>Plano de tratamento</h3><p>Você recebe por escrito o método, os produtos, o prazo e o valor. Sem cobrança pela vistoria em Marau.</p></div>
+      </div>
+      <div class="step rv">
+        <span class="step-n">3</span>
+        <div><h3>Aplicação</h3><p>Execução por equipe uniformizada e com EPI, com orientação clara do que fazer antes e depois.</p></div>
+      </div>
+      <div class="step rv">
+        <span class="step-n">4</span>
+        <div><h3>Retorno de acompanhamento</h3><p>Nova visita para conferir o resultado e reforçar onde for necessário, dentro do prazo de garantia.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EM CAMPO (galeria) ========== -->
+<section class="sec campo dark" id="campo">
+  <div class="wrap">
+    <p class="eyebrow rv">Em campo</p>
+    <h2 class="rv">Como é o serviço<br>quando a gente chega</h2>
+    <p class="lede rv" style="margin-top:20px">Equipe uniformizada, equipamento próprio e registro fotográfico de cada visita. O que está aqui é o que você vai ver na sua casa ou na sua empresa.</p>
+
+    <div class="gal">
+      <figure class="rv">
+        <div class="pend img-4x5">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a5 5 0 0 1 5 5v1h1a3 3 0 0 1 3 3v3H3v-3a3 3 0 0 1 3-3h1V7a5 5 0 0 1 5-5zM3 17h18v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          <b>Equipe em aplicação</b>
+          <span>Técnico uniformizado, com EPI, aplicando produto</span>
+        </div>
+        <figcaption>Equipe em aplicação</figcaption>
+      </figure>
+      <figure class="rv">
+        <div class="pend img-4x5">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6v4h3l2 5v9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-9l2-5h1zM4 6h3M4 10h3"/></svg>
+          <b>Equipamento</b>
+          <span>Pulverizador, termonebulizador e polvilhadeira</span>
+        </div>
+        <figcaption>Equipamento</figcaption>
+      </figure>
+      <figure class="rv">
+        <div class="pend img-4x5">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM4 9l2-4h12l2 4M9 16h1"/></svg>
+          <b>Porta-isca instalado</b>
+          <span>Estação lacrada, numerada, já no ponto de monitoramento</span>
+        </div>
+        <figcaption>Porta-isca instalado</figcaption>
+      </figure>
+      <figure class="rv">
+        <div class="pend img-4x5">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13l2-6h14l2 6v5h-3M6 18H3v-5m3 5a2 2 0 1 0 4 0m8 0a2 2 0 1 0-4 0M6 18h8"/></svg>
+          <b>Veículo identificado</b>
+          <span>Carro ou utilitário com a marca BravusTec aplicada</span>
+        </div>
+        <figcaption>Veículo identificado</figcaption>
+      </figure>
+    </div>
+
+    <p class="gal-note rv"><b>Placeholder.</b> As quatro fotos acima precisam ser da própria BravusTec — equipe real, equipamento real, veículo real. É a única parte do site que não dá para resolver com banco de imagens: é justamente o que prova que a empresa existe.</p>
+  </div>
+</section>
+
+<!-- ========== CREDENCIAIS ========== -->
+<section class="sec cred dark" id="credenciais">
+  <div class="wrap">
+    <p class="eyebrow rv">Credenciais</p>
+    <h2 class="rv">Empresa nova, papelada<br>em dia desde o primeiro dia</h2>
+    <p class="lede rv" style="margin-top:20px">A BravusTec está começando agora. Em vez de inventar tempo de mercado, colocamos aqui o que dá para conferir.</p>
+    <div class="cred-grid">
+      <div class="cred-item rv"><strong>Licença sanitária</strong><span class="ph">[[NÚMERO]]</span><br><span>Emitida pela vigilância sanitária municipal</span></div>
+      <div class="cred-item rv"><strong>Licença ambiental</strong><span class="ph">[[NÚMERO / FEPAM]]</span><br><span>Exigida para transporte e uso de saneantes</span></div>
+      <div class="cred-item rv"><strong>Responsável técnico</strong><span class="ph">[[NOME · CONSELHO · REGISTRO]]</span><br><span>Responde pela execução e pelo treinamento da equipe</span></div>
+      <div class="cred-item rv"><strong>Produtos registrados na ANVISA</strong><span>Saneantes de venda restrita a empresas especializadas, com número de registro informado no comprovante</span></div>
+      <div class="cred-item rv"><strong>Comprovante de execução</strong><span>Praga alvo, produto, grupo químico, prazo de assistência e telefone do Centro de Informação Toxicológica</span></div>
+      <div class="cred-item rv"><strong>Órgãos licenciadores</strong><span>Vigilância Sanitária municipal, FEPAM, CRQ e IBAMA — os mesmos que o comprador de Marau já procura</span></div>
+      <div class="cred-item rv"><strong>CNPJ e nota fiscal</strong><span class="ph">[[CNPJ]]</span><br><span>Emissão de nota para pessoa física e jurídica</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SEGURANÇA ========== -->
+<section class="sec" id="seguranca">
+  <div class="wrap safe-grid">
+    <div class="rv reveal">
+      <div class="ill img-4x5" style="border-radius:var(--r-lg); box-shadow:var(--sh)">
+        <svg viewBox="0 0 400 500" role="img" aria-label="Ilustração de ambiente residencial com o prazo de reentrada cumprido" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="bgS" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
+            </linearGradient>
+            <pattern id="grS" width="26" height="26" patternUnits="userSpaceOnUse">
+              <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="400" height="500" fill="url(#bgS)"/>
+          <rect width="400" height="500" fill="url(#grS)"/>
+          <g class="art">
+            <!-- casa -->
+            <path d="M60 214 L200 108 L340 214" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M92 196 v196 h216 v-196" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M92 392 h216" stroke="rgba(255,255,255,.62)" stroke-width="3"/>
+            <!-- selo de liberado -->
+            <circle cx="200" cy="164" r="26" fill="#D9A62C"/>
+            <path d="M188 164 l9 9 16 -18" fill="none" stroke="#F2C75B" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- criança -->
+            <g transform="translate(148 286)">
+              <circle cx="0" cy="0" r="19" fill="#D9A62C"/>
+              <path d="M0 20 v46" stroke="#D9A62C" stroke-width="17" stroke-linecap="round"/>
+              <path d="M0 34 l-20 16 M0 34 l20 16" stroke="#D9A62C" stroke-width="9" stroke-linecap="round"/>
+              <path d="M-8 68 l-6 32 M8 68 l6 32" stroke="#D9A62C" stroke-width="9" stroke-linecap="round"/>
+            </g>
+            <!-- cachorro -->
+            <g transform="translate(238 340)">
+              <rect x="0" y="8" width="60" height="30" rx="14" fill="#8A6410"/>
+              <circle cx="66" cy="10" r="16" fill="#8A6410"/>
+              <path d="M58 -4 l-4 -16 12 8 z" fill="#8A6410"/>
+              <path d="M74 -4 l4 -16 -12 8 z" fill="#8A6410"/>
+              <circle cx="71" cy="8" r="3.2" fill="#F2C75B"/>
+              <path d="M10 38 v14 M26 38 v14 M44 38 v14 M56 38 v14" stroke="#8A6410" stroke-width="8" stroke-linecap="round"/>
+              <path d="M0 14 c-16 -6 -22 -20 -14 -30" fill="none" stroke="#8A6410" stroke-width="7" stroke-linecap="round"/>
+            </g>
+            <!-- relógio de reentrada -->
+            <g transform="translate(300 244)">
+              <circle r="24" fill="none" stroke="#F2C75B" stroke-width="3"/>
+              <path d="M0 -13 V2 l11 8" fill="none" stroke="#F2C75B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </g>
+        </svg>
+        <span class="img-cap">Prazo de reentrada</span>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow rv">Segurança</p>
+      <h2 class="rv">Tem criança e bicho<br>em casa. E agora?</h2>
+      <ul class="safe-list rv">
+        <li>
+          <span class="safe-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <span><b>Quanto tempo fora</b><span>Informamos o prazo de reentrada antes de começar, conforme o produto usado no seu caso.</span></span>
+        </li>
+        <li>
+          <span class="safe-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7"/><rect x="2" y="7" width="20" height="5" rx="1"/><path d="M12 21V7"/></svg></span>
+          <span><b>O que guardar antes</b><span>Alimentos, utensílios, potes de ração e brinquedos de criança saem da área tratada.</span></span>
+        </li>
+        <li>
+          <span class="safe-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s7-4.2 7-9.5A4.5 4.5 0 0 0 12 7a4.5 4.5 0 0 0-7 3.5C5 15.8 12 20 12 20z"/></svg></span>
+          <span><b>Pets</b><span>Cães, gatos, aves e aquários têm cuidado específico. A orientação vem por escrito, não só falada.</span></span>
+        </li>
+        <li>
+          <span class="safe-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16v-4M12 8h.01"/><circle cx="12" cy="12" r="9"/></svg></span>
+          <span><b>Em caso de dúvida depois</b><span>O comprovante traz o telefone do Centro de Informação Toxicológica e o nosso contato direto.</span></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ÁREA DE ATENDIMENTO ========== -->
+<section class="sec area" id="area">
+  <div class="wrap">
+    <p class="eyebrow rv">Onde atendemos</p>
+    <h2 class="rv">Marau e o norte do RS</h2>
+    <p class="lede rv" style="margin-top:18px">Atendimento próprio em Marau, com deslocamento para as cidades da região. Quanto mais perto, menor o custo de deslocamento no orçamento.</p>
+    <div class="cities rv">
+      <span class="city city-main">Marau</span>
+      <span class="city">Passo Fundo</span>
+      <span class="city">Casca</span>
+      <span class="city">Vila Maria</span>
+      <span class="city">Nova Araçá</span>
+      <span class="city">Camargo</span>
+      <span class="city">Gentil</span>
+      <span class="city">Vanini</span>
+      <span class="city">Ciríaco</span>
+      <span class="city">[[OUTRAS CIDADES]]</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <p class="eyebrow rv">Dúvidas frequentes</p>
+    <h2 class="rv">O que as pessoas<br>perguntam antes de fechar</h2>
+    <div class="faq">
+      <details class="q rv">
+        <summary><button type="button" style="pointer-events:none">Quanto custa uma dedetização?<span class="q-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></summary>
+        <div class="q-body">Depende da metragem, do tipo de praga e do nível de infestação — por isso a vistoria vem antes. Você recebe o valor fechado por escrito e só decide depois disso. Vistoria em Marau é sem custo.</div>
+      </details>
+      <details class="q rv">
+        <summary><button type="button" style="pointer-events:none">Em quanto tempo vocês atendem?<span class="q-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></summary>
+        <div class="q-body">Em Marau, normalmente no mesmo dia ou no dia seguinte. Para casos de urgência, chame no WhatsApp e descreva a situação — priorizamos infestação em local com alimento ou criança pequena.</div>
+      </details>
+      <details class="q rv">
+        <summary><button type="button" style="pointer-events:none">Quanto tempo dura a proteção?<span class="q-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></summary>
+        <div class="q-body">Varia conforme a praga, o produto e as condições do local. O prazo de assistência técnica fica registrado no comprovante de execução, e dentro dele o retorno não é cobrado.</div>
+      </details>
+      <details class="q rv">
+        <summary><button type="button" style="pointer-events:none">Como fica a casa com criança e animal?<span class="q-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></summary>
+        <div class="q-body">Usamos saneantes registrados na ANVISA, de venda restrita a empresas especializadas. Antes da aplicação você recebe por escrito o que precisa guardar, o prazo de reentrada no ambiente e o telefone do Centro de Informação Toxicológica. Se houver gestante, bebê, idoso, pet ou aquário no local, avise antes: isso muda o produto e o método.</div>
+      </details>
+      <details class="q rv">
+        <summary><button type="button" style="pointer-events:none">Vocês emitem o documento que a vigilância pede?<span class="q-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></summary>
+        <div class="q-body">Sim. O comprovante de execução de serviço traz praga alvo, data, produtos e grupo químico, prazo de assistência, nome e registro do responsável técnico e o telefone do Centro de Informação Toxicológica — como determina a RDC 622/2022 da ANVISA.</div>
+      </details>
+      <details class="q rv">
+        <summary><button type="button" style="pointer-events:none">Quais as formas de pagamento?<span class="q-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></summary>
+        <div class="q-body">[[PIX, DINHEIRO, DÉBITO, CRÉDITO EM ATÉ X VEZES E FATURAMENTO PARA EMPRESAS]]. Nota fiscal emitida em todos os casos.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA FINAL ========== -->
+<section class="sec final dark">
+  <div class="wrap">
+    <h2>Manda uma foto da praga.<br>A gente já sabe o que é.</h2>
+    <p class="lede">Descreva a situação no WhatsApp e recebe a orientação inicial antes mesmo da vistoria.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" data-wa href="#">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.16c-.25.69-1.46 1.32-2 1.36-.51.04-.99.22-3.34-.7-2.83-1.12-4.63-3.99-4.77-4.18-.14-.19-1.14-1.51-1.14-2.89s.72-2.05.98-2.33c.25-.28.55-.35.74-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.23.55.79 1.93.86 2.07.07.14.12.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.81.88-1.09.18-.28.37-.23.62-.14.25.09 1.6.76 1.87.9.28.14.46.21.53.32.07.12.07.67-.18 1.36z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="tel:+55[[DDD-TELEFONE]]">Ligar para (54) 99694-2942</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========== RODAPÉ ========== -->
+<footer class="ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand">
+      <a class="brand" href="#topo" style="margin-bottom:16px">
+        <span class="brand-mark">BT</span>
+        <span class="brand-txt"><span class="brand-name">BravusTec</span><span class="brand-sub">Soluções Ambientais</span></span>
+      </a>
+      <p>Controle de pragas urbanas para residências, comércios e indústrias em Marau e região.</p>
+    </div>
+    <div>
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="#servicos">Desinsetização</a></li>
+        <li><a href="#servicos">Desratização</a></li>
+        <li><a href="#servicos">Descupinização</a></li>
+        <li><a href="#servicos">Pombos e morcegos</a></li>
+        <li><a href="#servicos">Reservatórios de água</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#processo">Como funciona</a></li>
+        <li><a href="#campo">Em campo</a></li>
+        <li><a href="#credenciais">Credenciais</a></li>
+        <li><a href="#seguranca">Segurança</a></li>
+        <li><a href="#area">Onde atendemos</a></li>
+        <li><a href="#faq">Dúvidas</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li><a data-wa href="#">WhatsApp (54) 99694-2942</a></li>
+        <li><a href="tel:+5554996942942">(54) 99694-2942</a></li>
+        <li><a href="tel:+5554996034321">(54) 99603-4321</a></li>
+        <li><a href="mailto:[[E-MAIL]]">[[E-MAIL]]</a></li>
+        <li><a href="https://www.instagram.com/bravustec_solucoes" target="_blank" rel="noopener">@bravustec_solucoes</a></li>
+        <li>[[ENDEREÇO]] — Marau/RS</li>
+        <li>[[HORÁRIO DE ATENDIMENTO]]</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="ft-legal">
+      BravusTec Soluções Ambientais — CNPJ [[CNPJ]] · Licença sanitária [[Nº]] · Licença ambiental [[Nº]] · Responsável técnico [[NOME, CONSELHO E REGISTRO]].<br>
+      Empresa especializada em controle de vetores e pragas urbanas, conforme a RDC nº 622/2022 da ANVISA. O art. 22 dessa norma exige que toda propaganda traga a identificação nos órgãos licenciadores e o número da licença — preencha os campos acima antes de publicar. Em caso de intoxicação, ligue para o Centro de Informação Toxicológica: 0800 721 3000.
+    </p>
+  </div>
+</footer>
+
+<!-- ========== BOTÃO FLUTUANTE ========== -->
+<a class="wa" data-wa href="#" aria-label="Falar com a BravusTec no WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.16c-.25.69-1.46 1.32-2 1.36-.51.04-.99.22-3.34-.7-2.83-1.12-4.63-3.99-4.77-4.18-.14-.19-1.14-1.51-1.14-2.89s.72-2.05.98-2.33c.25-.28.55-.35.74-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.23.55.79 1.93.86 2.07.07.14.12.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.69-.81.88-1.09.18-.28.37-.23.62-.14.25.09 1.6.76 1.87.9.28.14.46.21.53.32.07.12.07.67-.18 1.36z"/></svg>
+</a>
+
+<script>
+/* ====== TROQUE AQUI ====== */
+const WHATSAPP = "5554996942942";                   // (54) 99694-2942 — do perfil do cliente
+const MSG = "Olá! Vim pelo site da BravusTec e gostaria de um orçamento de controle de pragas.";
+/* ========================= */
+
+const waURL = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(MSG)}`;
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.href = waURL;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+});
+
+/* menu mobile */
+const burger = document.getElementById("burger");
+const mnav = document.getElementById("mnav");
+burger.addEventListener("click", () => {
+  const open = burger.getAttribute("aria-expanded") === "true";
+  burger.setAttribute("aria-expanded", String(!open));
+  burger.setAttribute("aria-label", open ? "Abrir menu" : "Fechar menu");
+  mnav.classList.toggle("open", !open);
+});
+mnav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+  burger.setAttribute("aria-expanded", "false");
+  mnav.classList.remove("open");
+}));
+
+/* sombra do header ao rolar */
+const hdr = document.getElementById("hdr");
+const onScroll = () => hdr.classList.toggle("scrolled", window.scrollY > 8);
+onScroll();
+addEventListener("scroll", onScroll, { passive: true });
+
+/* revelação na rolagem */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.transitionDelay = `${Math.min(i * 60, 240)}ms`;
+      e.target.classList.add("in");
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+/* FAQ: só um aberto por vez */
+const qs = document.querySelectorAll(".q");
+qs.forEach(q => q.addEventListener("toggle", () => {
+  if (q.open) qs.forEach(o => { if (o !== q) o.open = false; });
+}));
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"PestControlService",
+  "name":"BravusTec Soluções Ambientais",
+  "description":"Controle de pragas urbanas para residências, comércios e indústrias em Marau e região, Rio Grande do Sul.",
+  "telephone":"+55 54 99694-2942",
+  "address":{"@type":"PostalAddress","streetAddress":"[[ENDEREÇO]]","addressLocality":"Marau","addressRegion":"RS","addressCountry":"BR"},
+  "areaServed":[{"@type":"City","name":"Marau"},{"@type":"City","name":"Passo Fundo"},{"@type":"City","name":"Casca"},{"@type":"City","name":"Vila Maria"}],
+  "openingHours":"[[HORÁRIO]]"
+}
+</script>
+
+</body>
+</html>
