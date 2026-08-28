@@ -459,6 +459,22 @@ section[id], main[id]{ scroll-margin-top:84px; }
 .cred-foto figcaption{ margin-top:12px; font-size:.9rem; color:rgba(255,255,255,.55); }
 
 /* ============================================================
+   AVALIAÇÕES
+   ============================================================ */
+.depo{ background:var(--ink); color:#fff; }
+.depo-grid{ display:grid; gap:16px; margin-top:46px; }
+.depo-card{
+  margin:0; padding:22px 20px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--r); border-top-left-radius:6px;
+}
+.depo-card blockquote{ margin:0; font-size:1rem; line-height:1.6; color:rgba(255,255,255,.86); }
+.depo-card figcaption{ margin-top:15px; font-size:.86rem; color:rgba(255,255,255,.5); }
+.depo-card figcaption strong{ display:block; color:var(--gold-lt); font-weight:600; margin-bottom:2px; }
+.depo-nota{ margin-top:28px; font-size:.86rem; color:rgba(255,255,255,.45); }
+
+/* ============================================================
    SEGURANÇA (pets / crianças)
    ============================================================ */
 .safe-grid{ display:grid; gap:clamp(32px,4vw,58px); align-items:center; }
@@ -578,6 +594,7 @@ section[id], main[id]{ scroll-margin-top:84px; }
   .proof-item{ border-bottom:none; }
   .svc-grid{ grid-template-columns:repeat(2,1fr); }
   .cred-grid{ grid-template-columns:repeat(2,1fr); }
+  .depo-grid{ grid-template-columns:repeat(2,1fr); }
   .gal{ grid-template-columns:repeat(2,1fr); }
 }
 @media (min-width:900px){
@@ -589,6 +606,7 @@ section[id], main[id]{ scroll-margin-top:84px; }
   .fork{ grid-template-columns:1fr 1fr; }
   .svc-grid{ grid-template-columns:repeat(3,1fr); }
   .cred-grid{ grid-template-columns:repeat(3,1fr); }
+  .depo-grid{ grid-template-columns:repeat(3,1fr); }
   .safe-grid{ grid-template-columns:.95fr 1.05fr; }
   .gal{ grid-template-columns:repeat(4,1fr); }
   .steps{ grid-template-columns:1fr 1fr; gap:0 44px; }
@@ -1193,6 +1211,45 @@ section[id], main[id]{ scroll-margin-top:84px; }
     </div>
   </div>
 </section>
+
+<!-- ========== AVALIAÇÕES · SEÇÃO DESLIGADA ==========
+     Para ligar: apague a linha de abertura de comentário logo
+     abaixo e a linha de fechamento no fim do bloco. Depois troque
+     os [[CAMPOS]] pelas mensagens reais e acrescente no menu um
+     link para #avaliacoes.
+
+     A seção afirma, no rodapé dela, que as mensagens são de
+     clientes e foram autorizadas. Só publique se isso for verdade:
+     cliente que autorizou, primeiro nome e inicial do sobrenome,
+     nunca telefone. Se usar print, corte número e foto de perfil.
+     ============================================================= -->
+<!--
+<section class="sec depo dark" id="avaliacoes">
+  <div class="wrap">
+    <p class="eyebrow rv">Avaliações</p>
+    <h2 class="rv">O que o cliente<br>escreveu depois do serviço</h2>
+    <div class="depo-grid">
+
+      <figure class="depo-card rv">
+        <blockquote>[[MENSAGEM DO CLIENTE]]</blockquote>
+        <figcaption><strong>[[NOME E INICIAL]]</strong><span>[[SERVIÇO · CIDADE · MÊS/ANO]]</span></figcaption>
+      </figure>
+
+      <figure class="depo-card rv">
+        <blockquote>[[MENSAGEM DO CLIENTE]]</blockquote>
+        <figcaption><strong>[[NOME E INICIAL]]</strong><span>[[SERVIÇO · CIDADE · MÊS/ANO]]</span></figcaption>
+      </figure>
+
+      <figure class="depo-card rv">
+        <blockquote>[[MENSAGEM DO CLIENTE]]</blockquote>
+        <figcaption><strong>[[NOME E INICIAL]]</strong><span>[[SERVIÇO · CIDADE · MÊS/ANO]]</span></figcaption>
+      </figure>
+
+    </div>
+    <p class="depo-nota rv">Mensagens enviadas por clientes no WhatsApp, publicadas com autorização.</p>
+  </div>
+</section>
+-->
 
 <!-- ========== FAQ ========== -->
 <section class="sec" id="faq">
