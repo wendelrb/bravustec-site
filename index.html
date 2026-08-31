@@ -279,7 +279,9 @@ section[id], main[id]{ scroll-margin-top:84px; }
   border-radius:var(--r);
   border:1px solid rgba(242,199,91,.16);
 }
-.campo .plan{ max-width:620px; margin-top:42px; }
+.campo-linha{ display:grid; gap:clamp(26px,3vw,40px); align-items:start; margin-top:42px; }
+.campo-linha .plan{ margin-top:0; }
+.campo-linha .gal{ margin-top:0; }
 @media (max-width:520px){
   .hero-ctas{ flex-direction:column; align-items:stretch; }
   .hero-ctas .btn{ width:100%; padding:0 16px; }
@@ -621,6 +623,8 @@ section[id], main[id]{ scroll-margin-top:84px; }
   .depo-grid{ grid-template-columns:repeat(3,1fr); }
   .safe-grid{ grid-template-columns:.95fr 1.05fr; }
   .gal{ grid-template-columns:repeat(4,1fr); }
+  .campo-linha{ grid-template-columns:1fr 1fr; }
+  .campo-linha .gal{ grid-template-columns:repeat(2,1fr); }
   .steps{ grid-template-columns:1fr 1fr; gap:0 44px; }
   .ft-grid{ grid-template-columns:1.5fr 1fr 1fr 1.2fr; }
 }
@@ -898,7 +902,8 @@ section[id], main[id]{ scroll-margin-top:84px; }
     <p class="eyebrow rv">Em campo</p>
     <h2 class="rv">Como é o serviço<br>quando a gente chega</h2>
         <p class="lede rv" style="margin-top:20px">Equipe uniformizada, equipamento próprio e registro fotográfico de cada visita. O que está aqui é o que você vai ver na sua casa ou na sua empresa.</p>
-    <div class="plan" aria-label="Ilustração de um mapa de pontos de monitoramento de pragas">
+    <div class="campo-linha">
+      <div class="plan" aria-label="Ilustração de um mapa de pontos de monitoramento de pragas">
       <div class="plan-hd"><span>Mapa de pontos</span><b>6 pontos ativos</b></div>
       <svg viewBox="0 0 400 260" role="img" aria-hidden="true">
         <defs>
@@ -967,6 +972,7 @@ section[id], main[id]{ scroll-margin-top:84px; }
         </div>
         <figcaption>Veículo identificado</figcaption>
       </figure>
+    </div>
     </div>
 
     <p class="gal-note rv"><b>Placeholder.</b> As três fotos ainda pendentes precisam ser da própria BravusTec — equipe real, equipamento real. O veículo já está com foto real. É a única parte do site que não dá para resolver com banco de imagens: é justamente o que prova que a empresa existe.</p>
