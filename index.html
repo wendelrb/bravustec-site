@@ -377,6 +377,11 @@ section[id], main[id]{ scroll-margin-top:84px; }
   width:100%; height:100%; display:block;
   transition:transform .55s cubic-bezier(.22,.7,.3,1);
 }
+.ill img{
+  width:100%; height:100%; display:block; object-fit:cover;
+  transition:transform .55s cubic-bezier(.22,.7,.3,1);
+}
+.reveal:hover .ill img{ transform:scale(1.045); }
 .ill .art{ transition:opacity .4s ease; }
 .reveal:hover .ill svg{ transform:scale(1.045); }
 .svc .ill{ border-radius:0; }
@@ -833,31 +838,8 @@ section[id], main[id]{ scroll-margin-top:84px; }
       <article class="svc rv reveal">
         <div class="svc-media">
           <div class="ill img-4x3">
-            <svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de porta-isca lacrado com roedor" preserveAspectRatio="xMidYMid slice">
-              <defs>
-                <linearGradient id="bgb" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
-                </linearGradient>
-                <pattern id="grb" width="26" height="26" patternUnits="userSpaceOnUse">
-                  <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
-                </pattern>
-              </defs>
-              <rect width="400" height="300" fill="url(#bgb)"/>
-              <rect width="400" height="300" fill="url(#grb)"/>
-              <g class="art">
-<path d="M40 244 H360" stroke="rgba(255,255,255,.62)" stroke-width="2.5" stroke-linecap="round"/>
-<path d="M300 244 c0-30 -22-46 -46-46 -16 0 -26 8 -34 16 -8-10 -20-14 -32-10" fill="#D9A62C"/>
-<circle cx="272" cy="212" r="11" fill="#8A6410"/>
-<circle cx="292" cy="216" r="3.4" fill="#F2C75B"/>
-<path d="M188 204 c-22 -6 -34 6 -30 22" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="4" stroke-linecap="round"/>
-<rect x="70" y="150" width="164" height="94" rx="12" fill="#8A6410" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
-<rect x="70" y="150" width="164" height="26" rx="12" fill="#D9A62C"/>
-<path d="M70 176 H234" stroke="rgba(255,255,255,.62)" stroke-width="2" opacity=".6"/>
-<path d="M88 244 v-26 a16 16 0 0 1 32 0 v26 z" fill="#080704"/>
-<circle cx="206" cy="206" r="12" fill="none" stroke="#F2C75B" stroke-width="3"/>
-<path d="M206 200 v12" stroke="#F2C75B" stroke-width="3" stroke-linecap="round"/>
-<text x="152" y="215" fill="#F2C75B" font-family="Instrument Sans,sans-serif" font-size="21" font-weight="700">04</text></g>
-            </svg>
+            <img src="roedores.webp" width="760" height="570" loading="lazy" decoding="async"
+                 alt="Técnico instalando porta-isca lacrado junto à parede de um estoque">
             <span class="img-cap">Porta-isca lacrado</span></div>
         </div>
         <div class="svc-body">
@@ -870,32 +852,8 @@ section[id], main[id]{ scroll-margin-top:84px; }
       <article class="svc rv reveal">
         <div class="svc-media">
           <div class="ill img-4x3">
-            <svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de viga de madeira com galerias de cupim" preserveAspectRatio="xMidYMid slice">
-              <defs>
-                <linearGradient id="bgc" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
-                </linearGradient>
-                <pattern id="grc" width="26" height="26" patternUnits="userSpaceOnUse">
-                  <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
-                </pattern>
-              </defs>
-              <rect width="400" height="300" fill="url(#bgc)"/>
-              <rect width="400" height="300" fill="url(#grc)"/>
-              <g class="art">
-<rect x="52" y="96" width="296" height="118" rx="8" fill="#8A6410" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
-<path d="M52 96 l296 0 M52 214 l296 0" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
-<path d="M84 96 v118 M136 96 v118 M264 96 v118 M316 96 v118" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
-<path d="M110 214 c18 -26 4 -44 24 -60 22 -18 8 -38 30 -50 M176 214 c14 -30 -2 -40 18 -56 20 -16 10 -34 28 -46
-         M236 214 c16 -22 2 -38 22 -52" fill="none" stroke="#080704" stroke-width="13" stroke-linecap="round"/>
-<path d="M110 214 c18 -26 4 -44 24 -60 22 -18 8 -38 30 -50 M176 214 c14 -30 -2 -40 18 -56 20 -16 10 -34 28 -46
-         M236 214 c16 -22 2 -38 22 -52" fill="none" stroke="#F2C75B" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round" opacity=".8"/>
-<g transform="translate(198 258) rotate(-14)">
-  <ellipse cx="0" cy="0" rx="30" ry="12" fill="#D9A62C"/>
-  <path d="M-22 -9 v18 M-8 -11 v22 M8 -11 v22" stroke="#8A6410" stroke-width="3"/>
-  <circle cx="34" cy="0" r="11" fill="#F2C75B"/>
-  <path d="M43 -6 l12 -7 M43 6 l12 7" stroke="#F2C75B" stroke-width="3.5" stroke-linecap="round"/>
-</g></g>
-            </svg>
+            <img src="cupim.webp" width="760" height="570" loading="lazy" decoding="async"
+                 alt="Técnico injetando produto em viga de madeira com galerias de cupim">
             <span class="img-cap">Dano estrutural por cupim</span></div>
         </div>
         <div class="svc-body">
@@ -908,38 +866,8 @@ section[id], main[id]{ scroll-margin-top:84px; }
       <article class="svc rv reveal">
         <div class="svc-media">
           <div class="ill img-4x3">
-            <svg viewBox="0 0 400 300" role="img" aria-label="Ilustracao de vedacao de frestas contra morcegos" preserveAspectRatio="xMidYMid slice">
-              <defs>
-                <linearGradient id="bgd" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
-                </linearGradient>
-                <pattern id="grd" width="26" height="26" patternUnits="userSpaceOnUse">
-                  <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
-                </pattern>
-                <pattern id="telad" width="11" height="11" patternUnits="userSpaceOnUse">
-                  <path d="M11 0H0v11" fill="none" stroke="#F2C75B" stroke-width="1.6" opacity=".85"/>
-                </pattern>
-              </defs>
-              <rect width="400" height="300" fill="url(#bgd)"/>
-              <rect width="400" height="300" fill="url(#grd)"/>
-              <g class="art">
-                <path d="M40 118 L200 40 L360 118" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="3" stroke-linejoin="round"/>
-                <path d="M66 118 v152 M334 118 v152" stroke="rgba(255,255,255,.55)" stroke-width="3"/>
-                <path d="M66 128 h268" stroke="rgba(255,255,255,.22)" stroke-width="2.5"/>
-                <rect x="196" y="150" width="112" height="82" rx="6" fill="#080704" stroke="rgba(255,255,255,.4)" stroke-width="2.5"/>
-                <rect x="202" y="156" width="100" height="70" rx="3" fill="url(#telad)"/>
-                <rect x="196" y="150" width="112" height="82" rx="6" fill="none" stroke="#F2C75B" stroke-width="2.5"/>
-                <circle cx="308" cy="150" r="12" fill="#D9A62C"/>
-                <path d="M302 150 l4 4 8 -9" fill="none" stroke="#12100C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <g transform="translate(112 186)">
-                  <path d="M0 0 c-14 -20 -34 -30 -56 -26 12 6 16 16 14 28 -10 -4 -18 -2 -24 6 16 2 24 12 26 26 14 -12 26 -16 40 -12 z" fill="#8A6410"/>
-                  <path d="M0 0 c14 -20 34 -30 56 -26 -12 6 -16 16 -14 28 10 -4 18 -2 24 6 -16 2 -24 12 -26 26 -14 -12 -26 -16 -40 -12 z" fill="#8A6410"/>
-                  <ellipse cx="0" cy="4" rx="11" ry="17" fill="#D9A62C"/>
-                  <path d="M-8 -12 l-4 -14 10 8 z M8 -12 l4 -14 -10 8 z" fill="#D9A62C"/>
-                  <circle cx="-4" cy="-2" r="2.6" fill="#12100C"/><circle cx="4" cy="-2" r="2.6" fill="#12100C"/>
-                </g>
-              </g>
-            </svg>
+            <img src="morcegos.webp" width="760" height="570" loading="lazy" decoding="async"
+                 alt="Técnico em escada vedando o vão do beiral com tela, ao entardecer">
             <span class="img-cap">Fresta vedada com tela</span></div>
         </div>
         <div class="svc-body">
@@ -952,28 +880,8 @@ section[id], main[id]{ scroll-margin-top:84px; }
       <article class="svc rv reveal">
         <div class="svc-media">
           <div class="ill img-4x3">
-            <svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de reservatório de água em corte" preserveAspectRatio="xMidYMid slice">
-              <defs>
-                <linearGradient id="bge" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
-                </linearGradient>
-                <pattern id="gre" width="26" height="26" patternUnits="userSpaceOnUse">
-                  <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
-                </pattern>
-              </defs>
-              <rect width="400" height="300" fill="url(#bge)"/>
-              <rect width="400" height="300" fill="url(#gre)"/>
-              <g class="art">
-<path d="M118 76 h164" stroke="rgba(255,255,255,.62)" stroke-width="2.5" stroke-linecap="round"/>
-<rect x="168" y="52" width="64" height="24" rx="6" fill="#8A6410" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
-<path d="M118 76 v168 a12 12 0 0 0 12 12 h140 a12 12 0 0 0 12 -12 V76" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
-<path d="M126 168 v78 a6 6 0 0 0 6 6 h136 a6 6 0 0 0 6 -6 v-78
-         c-22 12 -38 -10 -60 0 -22 10 -38 -12 -60 0 -8 4 -14 3 -22 0 z" fill="#D9A62C" opacity=".92"/>
-<path d="M126 168 c22 -12 38 10 60 0 22 -10 38 12 60 0 8 -4 14 -3 22 0" fill="none" stroke="#F2C75B" stroke-width="2.5" opacity=".85"/>
-<path d="M92 132 h-42 M50 132 l14 -10 M50 132 l14 10" stroke="#F2C75B" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M308 132 h42 M350 132 l-14 -10 M350 132 l-14 10" stroke="#F2C75B" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M200 96 c14 18 22 28 22 38 a22 22 0 0 1 -44 0 c0 -10 8 -20 22 -38 z" fill="#F2C75B"/></g>
-            </svg>
+            <img src="caixa.webp" width="760" height="570" loading="lazy" decoding="async"
+                 alt="Profissional higienizando o interior de uma caixa d’água sobre a laje">
             <span class="img-cap">Reservatório higienizado</span></div>
         </div>
         <div class="svc-body">
@@ -986,26 +894,8 @@ section[id], main[id]{ scroll-margin-top:84px; }
       <article class="svc rv reveal">
         <div class="svc-media">
           <div class="ill img-4x3">
-            <svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de forro em corte, com o vão entre telhado e forro" preserveAspectRatio="xMidYMid slice">
-              <defs>
-                <linearGradient id="bgf" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#221E15"/><stop offset="1" stop-color="#0C0A07"/>
-                </linearGradient>
-                <pattern id="grf" width="26" height="26" patternUnits="userSpaceOnUse">
-                  <path d="M26 0H0v26" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1"/>
-                </pattern>
-              </defs>
-              <rect width="400" height="300" fill="url(#bgf)"/>
-              <rect width="400" height="300" fill="url(#grf)"/>
-              <g class="art">
-<path d="M58 158 L200 50 L342 158" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M88 178 V252 M312 178 V252" stroke="rgba(255,255,255,.62)" stroke-width="2.5" stroke-linecap="round"/>
-<rect x="88" y="178" width="224" height="26" rx="6" fill="#D9A62C" opacity=".92" stroke="rgba(255,255,255,.62)" stroke-width="2.5"/>
-<path d="M144 178 v26 M200 178 v26 M256 178 v26" stroke="#8A6410" stroke-width="2.5" opacity=".55"/>
-<path d="M138 106 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5 z" fill="#F2C75B"/>
-<path d="M232 124 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z" fill="#F2C75B" opacity=".85"/>
-<path d="M280 120 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 z" fill="#F2C75B" opacity=".7"/></g>
-            </svg>
+            <img src="forro.webp" width="760" height="570" loading="lazy" decoding="async"
+                 alt="Técnico aspirando resíduo no vão do forro, entre as tesouras do telhado">
             <span class="img-cap">Forro higienizado</span></div>
         </div>
         <div class="svc-body">
