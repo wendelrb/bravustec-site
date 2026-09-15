@@ -994,8 +994,12 @@ section[id], main[id]{ scroll-margin-top:84px; }
     </figure>
     <div class="cred-grid">
       <div class="cred-item rv"><strong>Experiência</strong><span class="ph">Mais de 5 anos no controle de pragas</span><br><span>Tempo de atuação do responsável, anterior à abertura do CNPJ</span></div>
+      <!-- OCULTO: aguarda o numero da licenca sanitaria. Para religar, apague esta linha e a de fechamento.
       <div class="cred-item rv"><strong>Licença sanitária</strong><span class="ph">[[NÚMERO]]</span><br><span>Emitida pela vigilância sanitária municipal</span></div>
+      -->
+      <!-- OCULTO: aguarda o numero da licenca ambiental / FEPAM. Para religar, apague esta linha e a de fechamento.
       <div class="cred-item rv"><strong>Licença ambiental</strong><span class="ph">[[NÚMERO / FEPAM]]</span><br><span>Exigida para transporte e uso de saneantes</span></div>
+      -->
       <div class="cred-item rv"><strong>Responsável técnico</strong><span class="ph">Marcos Pablo Masetto · CRQ-V 052004298</span><br><span>Responde pela execução e pelo treinamento da equipe</span></div>
       <div class="cred-item rv"><strong>Produtos registrados na ANVISA</strong><span>Saneantes de venda restrita a empresas especializadas, com número de registro informado no comprovante</span></div>
       <div class="cred-item rv"><strong>Comprovante de execução</strong><span>Praga alvo, produto, grupo químico, prazo de assistência e telefone do Centro de Informação Toxicológica</span></div>
@@ -1097,7 +1101,9 @@ section[id], main[id]{ scroll-margin-top:84px; }
       <span class="city">Gentil</span>
       <span class="city">Vanini</span>
       <span class="city">Ciríaco</span>
+      <!-- OCULTO: aguarda a lista das demais cidades atendidas. Para religar, apague esta linha e a de fechamento.
       <span class="city">[[OUTRAS CIDADES]]</span>
+      -->
     </div>
   </div>
 </section>
@@ -1167,10 +1173,12 @@ section[id], main[id]{ scroll-margin-top:84px; }
         <summary><button type="button" style="pointer-events:none">Vocês emitem o documento que a vigilância pede?<span class="q-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></summary>
         <div class="q-body">Sim. O comprovante de execução de serviço traz praga alvo, data, produtos e grupo químico, prazo de assistência, nome e registro do responsável técnico e o telefone do Centro de Informação Toxicológica — como determina a RDC 622/2022 da ANVISA.</div>
       </details>
-      <details class="q rv">
+      <!-- OCULTO: aguarda as formas de pagamento. Para religar, apague esta linha e a de fechamento.
+<details class="q rv">
         <summary><button type="button" style="pointer-events:none">Quais as formas de pagamento?<span class="q-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></summary>
         <div class="q-body">[[PIX, DINHEIRO, DÉBITO, CRÉDITO EM ATÉ X VEZES E FATURAMENTO PARA EMPRESAS]]. Nota fiscal emitida em todos os casos.</div>
       </details>
+-->
     </div>
   </div>
 </section>
@@ -1229,17 +1237,24 @@ section[id], main[id]{ scroll-margin-top:84px; }
         <li><a data-wa href="#">WhatsApp (54) 99694-2942</a></li>
         <li><a href="tel:+5554996942942">(54) 99694-2942</a></li>
         <li><a href="tel:+5554996034321">(54) 99603-4321</a></li>
+        <!-- OCULTO: aguarda o e-mail comercial. Para religar, apague esta linha e a de fechamento.
         <li><a href="mailto:[[E-MAIL]]">[[E-MAIL]]</a></li>
+        -->
         <li><a href="https://www.instagram.com/bravustec_solucoes" target="_blank" rel="noopener">@bravustec_solucoes</a></li>
+        <!-- OCULTO: aguarda a definicao do endereco (CNPJ e Nova Alvorada, o site anuncia Marau). Para religar, apague esta linha e a de fechamento.
         <li>[[ENDEREÇO]] — Marau/RS</li>
+        -->
+        <!-- OCULTO: aguarda o horario de atendimento. Para religar, apague esta linha e a de fechamento.
         <li>[[HORÁRIO DE ATENDIMENTO]]</li>
+        -->
       </ul>
     </div>
   </div>
   <div class="wrap">
     <p class="ft-legal">
-      BravusTec Desinsetizadora Ltda — CNPJ 67.513.859/0001-75 · Licença sanitária [[Nº]] · Licença ambiental [[Nº]] · Responsável técnico Marcos Pablo Masetto, CRQ-V 052004298.<br>
-      Empresa especializada em controle de vetores e pragas urbanas, conforme a RDC nº 622/2022 da ANVISA. O art. 22 dessa norma exige que toda propaganda traga a identificação nos órgãos licenciadores e o número da licença — preencha os campos acima antes de publicar. Em caso de intoxicação, ligue para o Centro de Informação Toxicológica: 0800 721 3000.
+      BravusTec Desinsetizadora Ltda — CNPJ 67.513.859/0001-75 · Responsável técnico Marcos Pablo Masetto, CRQ-V 052004298.<br>
+      Empresa especializada em controle de vetores e pragas urbanas, conforme a RDC nº 622/2022 da ANVISA. O art. 22 dessa norma exige que toda propaganda traga a identificação nos órgãos licenciadores e o número da licença.
+      <!-- LEMBRETE: reponha as duas licencas na linha acima e nas credenciais assim que os numeros existirem. --> Em caso de intoxicação, ligue para o Centro de Informação Toxicológica: 0800 721 3000.
     </p>
   </div>
 </footer>
@@ -1309,9 +1324,8 @@ qs.forEach(q => q.addEventListener("toggle", () => {
   "name":"BravusTec Desinsetizadora",
   "description":"Controle de pragas urbanas para residências, comércios e indústrias em Marau e região, Rio Grande do Sul.",
   "telephone":"+55 54 99694-2942",
-  "address":{"@type":"PostalAddress","streetAddress":"[[ENDEREÇO]]","addressLocality":"Marau","addressRegion":"RS","addressCountry":"BR"},
-  "areaServed":[{"@type":"City","name":"Marau"},{"@type":"City","name":"Passo Fundo"},{"@type":"City","name":"Casca"},{"@type":"City","name":"Vila Maria"}],
-  "openingHours":"[[HORÁRIO]]"
+  "address":{"@type":"PostalAddress","addressLocality":"Marau","addressRegion":"RS","addressCountry":"BR"},
+  "areaServed":[{"@type":"City","name":"Marau"},{"@type":"City","name":"Passo Fundo"},{"@type":"City","name":"Casca"},{"@type":"City","name":"Vila Maria"}]
 }
 </script>
 
